@@ -1,0 +1,502 @@
+[
+  {
+    "title": "Smartphone Samsung Galaxy S23 Ultra",
+    "description": "Câmera de 200MP, tela AMOLED 6.8 polegadas, 5G, bateria de longa duração",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Notebook Dell Inspiron 15",
+    "description": "Intel Core i7, 16GB RAM, SSD 512GB, placa de vídeo NVIDIA dedicada",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Smart TV LG 55 polegadas",
+    "description": "4K OLED, HDR, WebOS, controle remoto com inteligência artificial",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Fone de ouvido Sony WH-1000XM5",
+    "description": "Cancelamento de ruído ativo, Bluetooth 5.2, bateria 30 horas",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Apple iPad Pro",
+    "description": "Chip M2, tela Liquid Retina XDR, compatível com Apple Pencil",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Câmera Canon EOS R6",
+    "description": "Mirrorless full frame, 24.2MP, vídeo 4K 60fps, estabilização",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Console PlayStation 5",
+    "description": "SSD ultra-rápido, controle DualSense, ray tracing, gráficos 4K",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Smartwatch Apple Watch Series 9",
+    "description": "Monitor cardíaco, GPS, rastreamento de sono, resistente à água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Kindle Paperwhite",
+    "description": "Tela sem reflexo, luz ajustável, 16GB, à prova d'água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Caixa de som JBL Flip 6",
+    "description": "Bluetooth portátil, som 360 graus, à prova d'água, 12h bateria",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Tênis Nike Air Max 270",
+    "description": "Amortecimento de impacto, design moderno, ideal para corrida e caminhada",
+    "category": "Moda"
+  },
+  {
+    "title": "Jaqueta de couro Levi's",
+    "description": "Couro legítimo, estilo motoqueiro, forros internos, zíperes metálicos",
+    "category": "Moda"
+  },
+  {
+    "title": "Relógio Casio G-Shock",
+    "description": "Resistente a choques, à prova d'água 200m, cronômetro, múltiplos fusos",
+    "category": "Moda"
+  },
+  {
+    "title": "Bolsa Michael Kors",
+    "description": "Couro legítimo, alça transversal, compartimentos internos, design sofisticado",
+    "category": "Moda"
+  },
+  {
+    "title": "Óculos Ray-Ban Aviator",
+    "description": "Lentes polarizadas, proteção UV400, armação de metal dourado",
+    "category": "Moda"
+  },
+  {
+    "title": "Mochila Herschel",
+    "description": "Para notebook até 15 polegadas, tecido resistente, compartimento acolchoado",
+    "category": "Moda"
+  },
+  {
+    "title": "Calça jeans Diesel",
+    "description": "Slim fit, lavagem escura, tecido stretch confortável",
+    "category": "Moda"
+  },
+  {
+    "title": "Vestido longo floral",
+    "description": "Tecido leve e fluido, ideal para verão, decote em V elegante",
+    "category": "Moda"
+  },
+  {
+    "title": "Cinto de couro Hugo Boss",
+    "description": "Couro legítimo, fivela metálica, largura 3.5cm, estilo clássico",
+    "category": "Moda"
+  },
+  {
+    "title": "Carteira Tommy Hilfiger",
+    "description": "Couro genuíno, múltiplos compartimentos para cartões, porta-moedas",
+    "category": "Moda"
+  },
+  {
+    "title": "Aspirador robô Roomba i7+",
+    "description": "Mapeamento inteligente, esvaziamento automático, Wi-Fi, compatível Alexa",
+    "category": "Casa"
+  },
+  {
+    "title": "Purificador de ar Philips",
+    "description": "Filtro HEPA, remove 99.97% partículas, sensor qualidade do ar",
+    "category": "Casa"
+  },
+  {
+    "title": "Cafeteira Nespresso Vertuo",
+    "description": "Preparo automático, 5 tamanhos de xícara, sistema de cápsulas",
+    "category": "Casa"
+  },
+  {
+    "title": "Jogo de panelas Tramontina",
+    "description": "Antiaderentes, 5 peças, cabo baquelite, indução, livre de PFOA",
+    "category": "Casa"
+  },
+  {
+    "title": "Edredom king size",
+    "description": "300 fios, 100% algodão egípcio, hipoalergênico, macio e respirável",
+    "category": "Casa"
+  },
+  {
+    "title": "Bicicleta ergométrica Kikos",
+    "description": "8 níveis resistência, monitor LCD, suporta até 120kg",
+    "category": "Esportes"
+  },
+  {
+    "title": "Halteres ajustáveis",
+    "description": "2 a 24kg por unidade, sistema de seleção rápida, base compacta",
+    "category": "Esportes"
+  },
+  {
+    "title": "Esteira elétrica Movement",
+    "description": "Velocidade até 16km/h, inclinação elétrica, monitor cardíaco",
+    "category": "Esportes"
+  },
+  {
+    "title": "Colchonete de yoga premium",
+    "description": "6mm espessura, material NBR, antiderrapante, alça para transporte",
+    "category": "Esportes"
+  },
+  {
+    "title": "Suplemento whey protein",
+    "description": "Isolado 900g, zero lactose, 25g de proteína por dose, sabor chocolate",
+    "category": "Esportes"
+  },
+  {
+    "title": "Livro Sapiens",
+    "description": "Yuval Noah Harari, história da humanidade, capa dura, 464 páginas",
+    "category": "Livros"
+  },
+  {
+    "title": "Box Harry Potter completo",
+    "description": "7 volumes, J.K. Rowling, capa dura ilustrada, edição colecionador",
+    "category": "Livros"
+  },
+  {
+    "title": "Livro Hábitos Atômicos",
+    "description": "James Clear, guia prático para criar bons hábitos, best-seller",
+    "category": "Livros"
+  },
+  {
+    "title": "Livro 1984",
+    "description": "George Orwell, edição especial, tradução nova, análise crítica",
+    "category": "Livros"
+  },
+  {
+    "title": "Café em grãos Pilão Reserva",
+    "description": "1kg, torra média, notas chocolate e caramelo, arábica 100%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Azeite extra virgem português",
+    "description": "500ml, primeira prensagem a frio, acidez 0.3%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Chocolate Lindt Excellence",
+    "description": "70% cacau, tablete 100g, cacau sustentável belga",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Mel puro de abelhas",
+    "description": "500g, produção artesanal, sem aditivos, florada silvestre",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Livro 1984 Vermelho Max",
+    "description": "George Orwell, edição especial, tradução nova, análise crítica",
+    "category": "Livros"
+  },
+  {
+    "title": "Console PlayStation 5 Vermelho GG",
+    "description": "SSD ultra-rápido, controle DualSense, ray tracing, gráficos 4K",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Kindle Paperwhite Max",
+    "description": "Tela sem reflexo, luz ajustável, 16GB, à prova d'água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Aspirador robô Roomba i7+ G Special Edition Modelo 5772",
+    "description": "Mapeamento inteligente, esvaziamento automático, Wi-Fi, compatível Alexa",
+    "category": "Casa"
+  },
+  {
+    "title": "Caixa de som JBL Flip 6 P Max",
+    "description": "Bluetooth portátil, som 360 graus, à prova d'água, 12h bateria",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Carteira Tommy Hilfiger 1TB Modelo 9486",
+    "description": "Couro genuíno, múltiplos compartimentos para cartões, porta-moedas",
+    "category": "Moda"
+  },
+  {
+    "title": "Livro Sapiens 256GB Rosa",
+    "description": "Yuval Noah Harari, história da humanidade, capa dura, 464 páginas",
+    "category": "Livros"
+  },
+  {
+    "title": "Smartphone Samsung Galaxy S23 Ultra 512GB New Balance",
+    "description": "Câmera de 200MP, tela AMOLED 6.8 polegadas, 5G, bateria de longa duração",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Smartphone Samsung Galaxy S23 Ultra Deluxe Bege",
+    "description": "Câmera de 200MP, tela AMOLED 6.8 polegadas, 5G, bateria de longa duração",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Óculos Ray-Ban Aviator Basic New Balance Modelo 284",
+    "description": "Lentes polarizadas, proteção UV400, armação de metal dourado",
+    "category": "Moda"
+  },
+  {
+    "title": "Livro Hábitos Atômicos G LG",
+    "description": "James Clear, guia prático para criar bons hábitos, best-seller",
+    "category": "Livros"
+  },
+  {
+    "title": "Mochila Herschel Elite Laranja",
+    "description": "Para notebook até 15 polegadas, tecido resistente, compartimento acolchoado",
+    "category": "Moda"
+  },
+  {
+    "title": "Smart TV LG 55 polegadas Ray-Ban GG Modelo 5287",
+    "description": "4K OLED, HDR, WebOS, controle remoto com inteligência artificial",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Aspirador robô Roomba i7+ 64GB Preto",
+    "description": "Mapeamento inteligente, esvaziamento automático, Wi-Fi, compatível Alexa",
+    "category": "Casa"
+  },
+  {
+    "title": "Azeite extra virgem português Roxo Special Edition",
+    "description": "500ml, primeira prensagem a frio, acidez 0.3%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Café em grãos Pilão Reserva Lite Modelo 703",
+    "description": "1kg, torra média, notas chocolate e caramelo, arábica 100%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Chocolate Lindt Excellence Max",
+    "description": "70% cacau, tablete 100g, cacau sustentável belga",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Café em grãos Pilão Reserva Basic Lacoste",
+    "description": "1kg, torra média, notas chocolate e caramelo, arábica 100%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Relógio Casio G-Shock Essential 64GB",
+    "description": "Resistente a choques, à prova d'água 200m, cronômetro, múltiplos fusos",
+    "category": "Moda"
+  },
+  {
+    "title": "Kindle Paperwhite Marrom Essential",
+    "description": "Tela sem reflexo, luz ajustável, 16GB, à prova d'água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Jaqueta de couro Levi's Laranja 256GB",
+    "description": "Couro legítimo, estilo motoqueiro, forros internos, zíperes metálicos",
+    "category": "Moda"
+  },
+  {
+    "title": "Cafeteira Nespresso Vertuo Tommy Hilfiger Premium",
+    "description": "Preparo automático, 5 tamanhos de xícara, sistema de cápsulas",
+    "category": "Casa"
+  },
+  {
+    "title": "Jogo de panelas Tramontina Marrom 2TB Modelo 9402",
+    "description": "Antiaderentes, 5 peças, cabo baquelite, indução, livre de PFOA",
+    "category": "Casa"
+  },
+  {
+    "title": "Óculos Ray-Ban Aviator Basic New Balance",
+    "description": "Lentes polarizadas, proteção UV400, armação de metal dourado",
+    "category": "Moda"
+  },
+  {
+    "title": "Colchonete de yoga premium 256GB Adidas",
+    "description": "6mm espessura, material NBR, antiderrapante, alça para transporte",
+    "category": "Esportes"
+  },
+  {
+    "title": "Smartwatch Apple Watch Series 9 32GB",
+    "description": "Monitor cardíaco, GPS, rastreamento de sono, resistente à água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Fone de ouvido Sony WH-1000XM5 M Prata Modelo 1074",
+    "description": "Cancelamento de ruído ativo, Bluetooth 5.2, bateria 30 horas",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Purificador de ar Philips Laranja Plus",
+    "description": "Filtro HEPA, remove 99.97% partículas, sensor qualidade do ar",
+    "category": "Casa"
+  },
+  {
+    "title": "Box Harry Potter completo Modelo 1217",
+    "description": "7 volumes, J.K. Rowling, capa dura ilustrada, edição colecionador",
+    "category": "Livros"
+  },
+  {
+    "title": "Tênis Nike Air Max 270 Amarelo Basic Modelo 4252",
+    "description": "Amortecimento de impacto, design moderno, ideal para corrida e caminhada",
+    "category": "Moda"
+  },
+  {
+    "title": "Halteres ajustáveis Special Edition",
+    "description": "2 a 24kg por unidade, sistema de seleção rápida, base compacta",
+    "category": "Esportes"
+  },
+  {
+    "title": "Fone de ouvido Sony WH-1000XM5 Levi's G",
+    "description": "Cancelamento de ruído ativo, Bluetooth 5.2, bateria 30 horas",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Livro Hábitos Atômicos 64GB",
+    "description": "James Clear, guia prático para criar bons hábitos, best-seller",
+    "category": "Livros"
+  },
+  {
+    "title": "Cafeteira Nespresso Vertuo Lacoste Advanced",
+    "description": "Preparo automático, 5 tamanhos de xícara, sistema de cápsulas",
+    "category": "Casa"
+  },
+  {
+    "title": "Tênis Nike Air Max 270 Laranja M Modelo 8565",
+    "description": "Amortecimento de impacto, design moderno, ideal para corrida e caminhada",
+    "category": "Moda"
+  },
+  {
+    "title": "Caixa de som JBL Flip 6 Essential 256GB Modelo 8872",
+    "description": "Bluetooth portátil, som 360 graus, à prova d'água, 12h bateria",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Mel puro de abelhas Max",
+    "description": "500g, produção artesanal, sem aditivos, florada silvestre",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Vestido longo floral Vermelho",
+    "description": "Tecido leve e fluido, ideal para verão, decote em V elegante",
+    "category": "Moda"
+  },
+  {
+    "title": "Halteres ajustáveis Sport M Modelo 7461",
+    "description": "2 a 24kg por unidade, sistema de seleção rápida, base compacta",
+    "category": "Esportes"
+  },
+  {
+    "title": "Console PlayStation 5 Branco Elite",
+    "description": "SSD ultra-rápido, controle DualSense, ray tracing, gráficos 4K",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Aspirador robô Roomba i7+ 512GB Max Modelo 3443",
+    "description": "Mapeamento inteligente, esvaziamento automático, Wi-Fi, compatível Alexa",
+    "category": "Casa"
+  },
+  {
+    "title": "Cinto de couro Hugo Boss Classic Rosa",
+    "description": "Couro legítimo, fivela metálica, largura 3.5cm, estilo clássico",
+    "category": "Moda"
+  },
+  {
+    "title": "Livro Hábitos Atômicos Plus Asus",
+    "description": "James Clear, guia prático para criar bons hábitos, best-seller",
+    "category": "Livros"
+  },
+  {
+    "title": "Jaqueta de couro Levi's Rosa 256GB Modelo 5754",
+    "description": "Couro legítimo, estilo motoqueiro, forros internos, zíperes metálicos",
+    "category": "Moda"
+  },
+  {
+    "title": "Apple iPad Pro 32GB Basic",
+    "description": "Chip M2, tela Liquid Retina XDR, compatível com Apple Pencil",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Mel puro de abelhas 32GB LG Modelo 3861",
+    "description": "500g, produção artesanal, sem aditivos, florada silvestre",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Bolsa Michael Kors Cinza Modelo 7090",
+    "description": "Couro legítimo, alça transversal, compartimentos internos, design sofisticado",
+    "category": "Moda"
+  },
+  {
+    "title": "Jaqueta de couro Levi's XG",
+    "description": "Couro legítimo, estilo motoqueiro, forros internos, zíperes metálicos",
+    "category": "Moda"
+  },
+  {
+    "title": "Relógio Casio G-Shock Elite LG",
+    "description": "Resistente a choques, à prova d'água 200m, cronômetro, múltiplos fusos",
+    "category": "Moda"
+  },
+  {
+    "title": "Notebook Dell Inspiron 15 Pro 32GB",
+    "description": "Intel Core i7, 16GB RAM, SSD 512GB, placa de vídeo NVIDIA dedicada",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Chocolate Lindt Excellence Marrom Deluxe Modelo 6702",
+    "description": "70% cacau, tablete 100g, cacau sustentável belga",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Tênis Nike Air Max 270 Laranja Modelo 1475",
+    "description": "Amortecimento de impacto, design moderno, ideal para corrida e caminhada",
+    "category": "Moda"
+  },
+  {
+    "title": "Smart TV LG 55 polegadas Cinza Modelo 835",
+    "description": "4K OLED, HDR, WebOS, controle remoto com inteligência artificial",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Esteira elétrica Movement Plus",
+    "description": "Velocidade até 16km/h, inclinação elétrica, monitor cardíaco",
+    "category": "Esportes"
+  },
+  {
+    "title": "Box Harry Potter completo Basic Verde",
+    "description": "7 volumes, J.K. Rowling, capa dura ilustrada, edição colecionador",
+    "category": "Livros"
+  },
+  {
+    "title": "Bolsa Michael Kors Elite Preto Modelo 9822",
+    "description": "Couro legítimo, alça transversal, compartimentos internos, design sofisticado",
+    "category": "Moda"
+  },
+  {
+    "title": "Azeite extra virgem português P Branco",
+    "description": "500ml, primeira prensagem a frio, acidez 0.3%",
+    "category": "Alimentos"
+  },
+  {
+    "title": "Cinto de couro Hugo Boss Premium P",
+    "description": "Couro legítimo, fivela metálica, largura 3.5cm, estilo clássico",
+    "category": "Moda"
+  },
+  {
+    "title": "Livro 1984 Prata GG",
+    "description": "George Orwell, edição especial, tradução nova, análise crítica",
+    "category": "Livros"
+  },
+  {
+    "title": "Smartwatch Apple Watch Series 9 Dourado GG Modelo 3760",
+    "description": "Monitor cardíaco, GPS, rastreamento de sono, resistente à água",
+    "category": "Eletrônicos"
+  },
+  {
+    "title": "Carteira Tommy Hilfiger Amarelo XG",
+    "description": "Couro genuíno, múltiplos compartimentos para cartões, porta-moedas",
+    "category": "Moda"
+  },
+  {
+    "title": "Cafeteira Nespresso Vertuo M Max",
+    "description": "Preparo automático, 5 tamanhos de xícara, sistema de cápsulas",
+    "category": "Casa"
+  }
+]

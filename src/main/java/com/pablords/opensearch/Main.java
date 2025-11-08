@@ -35,22 +35,22 @@ public class Main {
       // --- 4. Indexar Documentos (usando Bulk API) ---
       indexDocuments(client, embeddingModel);
 
-      // --- 5. Demonstrar buscas semânticas ---
+      // --- 5. Demonstrar buscas híbridas (BM25 + Semântica) ---
       System.out.println("\n" + "=".repeat(60));
-      System.out.println("DEMONSTRAÇÃO DE BUSCAS SEMÂNTICAS");
+      System.out.println("DEMONSTRAÇÃO DE BUSCA HÍBRIDA (BM25 + k-NN)");
       System.out.println("=".repeat(60));
 
-      // Busca 1: Animal de estimação
-      searchByVector(client, embeddingModel, "um animal de estimação feliz");
+      // Busca 1: Termo específico (vai acionar BM25)
+      hybridSearch(client, embeddingModel, "fone bluetooth cancelamento ruído", 5);
 
-      // Busca 2: Comida italiana (usando cache - será mais rápido)
-      searchByVector(client, embeddingModel, "comida italiana deliciosa");
+      // // Busca 2: Conceito semântico (vai acionar k-NN)
+      // hybridSearch(client, embeddingModel, "dispositivo para ouvir música sem fio", 5);
 
-      // Busca 3: Mesma query anterior (hit no cache - ainda mais rápido)
-      searchByVector(client, embeddingModel, "comida italiana deliciosa");
-      
-      // Busca 4: Treinamento de cachorro (retornar mais resultados)
-      searchByVector(client, embeddingModel, "treinar cachorro filhote", 4);
+      // // Busca 3: Com filtro de categoria
+      // hybridSearch(client, embeddingModel, "presente para corredor", 5, "Esportes");
+
+      // // Busca 4: Busca em categoria de livros
+      // hybridSearch(client, embeddingModel, "história ciência ficção", 5, "Livros");
 
       // --- 6. Estatísticas finais ---
       System.out.println("\n" + "=".repeat(60));

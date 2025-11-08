@@ -111,14 +111,15 @@ public class EmbeddingModel {
      * @param texts Lista de textos para processar
      * @return Lista de embeddings correspondentes
      */
-    public List<float[]> embedBatch(List<String> texts) throws TranslateException {
+    public List<float[]> embedBatch(List<Map<String, String>> texts) throws TranslateException {
         List<float[]> embeddings = new ArrayList<>(texts.size());
         List<String> textsToProcess = new ArrayList<>();
         List<Integer> indicesToProcess = new ArrayList<>();
         
         // Separar textos que já estão em cache dos que precisam ser processados
         for (int i = 0; i < texts.size(); i++) {
-            String text = texts.get(i);
+            Map<String, String> textMap = texts.get(i);
+            String text = textMap.get("title");
             if (text == null || text.trim().isEmpty()) {
                 throw new IllegalArgumentException("Texto na posição " + i + " é nulo ou vazio");
             }
