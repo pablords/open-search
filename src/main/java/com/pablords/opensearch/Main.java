@@ -4,25 +4,30 @@ import org.apache.hc.core5.http.HttpHost;
 import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.transport.httpclient5.ApacheHttpClient5TransportBuilder;
 
-import static com.pablords.opensearch.SemanticSearchOpenSearch.*;
+import static com.pablords.opensearch.Bootstrap.*;
 
 /**
- * Exemplo de uso do OpenSearch com busca semântica
- * Otimizado para produção com cache de embeddings e bulk indexing
+ * Demo completa: Busca Híbrida + LTR (Learning to Rank)
+ * 
+ * ARQUITETURA EM 3 ETAPAS:
+ * 1. RETRIEVAL: BM25 + k-NN (recupera ~200 candidatos)
+ * 2. FEATURE EXTRACTION: Extrai 17+ features por documento
+ * 3. RE-RANKING: Aplica modelo LTR e reordena resultados
  */
 public class Main {
   public static void main(String[] args) throws Exception {
 
-    System.out.println("=== OpenSearch Semantic Search Demo (Production Ready) ===\n");
+    System.out.println("═".repeat(80));
+    System.out.println("🚀 OpenSearch: Busca Híbrida + LTR (Estado da Arte)");
+    System.out.println("═".repeat(80));
+    System.out.println();
 
     // --- 1. Inicializar o Modelo de Embedding com cache ---
-    // Cache de 1000 embeddings para reutilização
     EmbeddingModel embeddingModel = new EmbeddingModel(1000);
 
     // --- 2. Inicializar o Cliente OpenSearch ---
     final HttpHost host = new HttpHost("http", "localhost", 9200);
     final ApacheHttpClient5TransportBuilder transportBuilder = ApacheHttpClient5TransportBuilder.builder(host);
-
     final OpenSearchClient client = new OpenSearchClient(transportBuilder.build());
 
     System.out.println("✓ Conectado ao OpenSearch!");
@@ -35,29 +40,33 @@ public class Main {
       // --- 4. Indexar Documentos (usando Bulk API) ---
       indexDocuments(client, embeddingModel);
 
-      // --- 5. Demonstrar buscas híbridas (BM25 + Semântica) ---
-      System.out.println("\n" + "=".repeat(60));
-      System.out.println("DEMONSTRAÇÃO DE BUSCA HÍBRIDA (BM25 + k-NN)");
-      System.out.println("=".repeat(60));
+      // --- 5. Inicializar Sistema de Busca Híbrida + LTR ---
+      HybridSearchWithLTR searchEngine = new HybridSearchWithLTR(client, embeddingModel);
+      
+      // Mostrar explicação do modelo LTR
+      System.out.println(searchEngine.explainModel());
 
-      // Busca 1: Termo específico (vai acionar BM25)
-      hybridSearch(client, embeddingModel, "fone bluetooth cancelamento ruído", 5);
+      // --- 6. DEMONSTRAÇÃO: Busca Híbrida + LTR ---
+      
+      // Busca 1: Query com termos específicos + conceito
+      searchEngine.search("Smartwatch Apple Watch Series 9 32GB", 5);
+      
+      // Busca 2: Query conceitual (vai explorar a semântica)
+      // searchEngine.search("dispositivo para ouvir música sem fio", 5);
+      
+      // // Busca 3: Query com filtro de categoria
+      // searchEngine.search("presente para corredor", 5, "Esportes");
+      
+      // // Busca 4: Query em categoria específica
+      // searchEngine.search("livro sobre futuro", 5, "Livros");
 
-      // // Busca 2: Conceito semântico (vai acionar k-NN)
-      // hybridSearch(client, embeddingModel, "dispositivo para ouvir música sem fio", 5);
-
-      // // Busca 3: Com filtro de categoria
-      // hybridSearch(client, embeddingModel, "presente para corredor", 5, "Esportes");
-
-      // // Busca 4: Busca em categoria de livros
-      // hybridSearch(client, embeddingModel, "história ciência ficção", 5, "Livros");
-
-      // --- 6. Estatísticas finais ---
-      System.out.println("\n" + "=".repeat(60));
-      System.out.println("ESTATÍSTICAS FINAIS");
-      System.out.println("=".repeat(60));
-      System.out.println("📊 " + embeddingModel.getCacheStats());
+      // --- 7. Estatísticas finais ---
+      System.out.println("\n" + "═".repeat(80));
+      System.out.println("📊 ESTATÍSTICAS FINAIS");
+      System.out.println("═".repeat(80));
+      System.out.println("Cache de Embeddings: " + embeddingModel.getCacheStats());
       System.out.println("✓ Demo concluída com sucesso!");
+      System.out.println("═".repeat(80));
 
     } catch (Exception e) {
       System.err.println("\n❌ Erro durante execução: " + e.getMessage());
