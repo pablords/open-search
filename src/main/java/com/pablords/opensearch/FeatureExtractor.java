@@ -1,6 +1,7 @@
 package com.pablords.opensearch;
 
 import java.util.*;
+import java.util.function.ToDoubleFunction;
 
 /**
  * Extrator de Features para Learning to Rank (LTR)
@@ -66,7 +67,7 @@ public class FeatureExtractor {
 
     // Feature 11: Ratio query/title length
     double titleLenRatio = queryLower.length() / Math.max(1.0, title.length());
-    builder.add("query_title_ratio", Math.min(titleLenRatio, 2.0)); // Cap at 2.0
+    builder.add("query_title_ratio", Math.min(2.0, titleLenRatio)); // Cap at 2.0
 
     // ============================================================
     // GRUPO 4: FEATURES DE POSIÇÃO/CONTEXTO
@@ -105,7 +106,7 @@ public class FeatureExtractor {
    * Normaliza um score entre 0 e 1 baseado nos valores do conjunto
    */
   private double normalizeScore(double score, List<SearchResult> allResults,
-      java.util.function.ToDoubleFunction<SearchResult> scoreExtractor) {
+      ToDoubleFunction<SearchResult> scoreExtractor) {
     if (allResults.isEmpty())
       return 0.0;
 
