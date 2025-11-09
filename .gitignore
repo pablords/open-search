@@ -3,4 +3,4 @@ target/
 *.log
 .DS_Store
 .idea/
-
+products_synthetic.json
