@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch",
+      "request": "launch",
+      "mainClass": "com.pablords.opensearch.Main",
+      "projectName": "open-search",
+      "preLaunchTask": "java (build): Build Workspace"
+    }
+
+  ]
+}
