@@ -85,21 +85,103 @@ public class FeatureExtractor {
     builder.add("has_known_brand", detectKnownBrand(queryLower));
 
     // ============================================================
-    // GRUPO 5: FEATURES DE POPULARIDADE (SIMULADAS)
+    // GRUPO 5: FEATURES DE POPULARIDADE (REAIS DO DATASET)
     // ============================================================
-    // Em produção, essas viriam de um banco de dados
+    
+    // Feature 15: Popularidade (clicks reais do produto) - NORMALIZADA
+    double popularity = getDoubleFromSource(result.getSource(), "popularity", 1000.0);
+    double normalizedPopularity = normalizePopularity(popularity, allResults);
+    builder.add("popularity", normalizedPopularity);
 
-    // Feature 15: Popularidade simulada baseada no docId (para demo)
-    int docNumber = extractDocNumber(result.getDocId());
-    builder.add("simulated_popularity", simulatePopularity(docNumber));
+    // Feature 16: Qualidade (rating real do produto) - NORMALIZADA para 0-1
+    double quality = getDoubleFromSource(result.getSource(), "quality", 4.0);
+    double normalizedQuality = normalizeQuality(quality);
+    builder.add("quality", normalizedQuality);
 
-    // Feature 16: Qualidade simulada (produtos mais antigos = mais reviews)
-    builder.add("simulated_quality", simulateQuality(docNumber));
-
-    // Feature 17: Click-through rate simulado
-    builder.add("simulated_ctr", simulateCTR(docNumber, category));
+    // Feature 17: Click-through rate real - NORMALIZADA
+    double ctr = getDoubleFromSource(result.getSource(), "ctr", 0.05);
+    double normalizedCtr = normalizeCtr(ctr, allResults);
+    builder.add("ctr", normalizedCtr);
 
     return builder.build();
+  }
+
+  /**
+   * Normaliza popularidade baseada no conjunto de resultados
+   */
+  private double normalizePopularity(double popularity, List<SearchResult> allResults) {
+    if (allResults.isEmpty()) return 0.5;
+    
+    // Extrair popularidades de todos os resultados
+    double maxPop = allResults.stream()
+        .mapToDouble(r -> getDoubleFromSource(r.getSource(), "popularity", 1000.0))
+        .max()
+        .orElse(10000.0);
+    
+    double minPop = allResults.stream()
+        .mapToDouble(r -> getDoubleFromSource(r.getSource(), "popularity", 1000.0))
+        .min()
+        .orElse(100.0);
+    
+    if (maxPop - minPop < 1.0) return 0.5;
+    
+    return (popularity - minPop) / (maxPop - minPop);
+  }
+
+  /**
+   * Normaliza qualidade de 0-5 para 0-1
+   */
+  private double normalizeQuality(double quality) {
+    // Assumindo que qualidade varia de 0 a 5
+    // Mapear para 0-1 onde 3.0 = mínimo aceitável
+    return Math.max(0.0, Math.min(1.0, (quality - 3.0) / 2.0));
+  }
+
+  /**
+   * Normaliza CTR baseada no conjunto de resultados
+   */
+  private double normalizeCtr(double ctr, List<SearchResult> allResults) {
+    if (allResults.isEmpty()) return 0.5;
+    
+    // Extrair CTRs de todos os resultados
+    double maxCtr = allResults.stream()
+        .mapToDouble(r -> getDoubleFromSource(r.getSource(), "ctr", 0.05))
+        .max()
+        .orElse(0.20);
+    
+    double minCtr = allResults.stream()
+        .mapToDouble(r -> getDoubleFromSource(r.getSource(), "ctr", 0.05))
+        .min()
+        .orElse(0.01);
+    
+    if (maxCtr - minCtr < 0.001) return 0.5;
+    
+    return (ctr - minCtr) / (maxCtr - minCtr);
+  }
+
+  /**
+   * Extrai um valor numérico do source do documento OpenSearch
+   */
+  private double getDoubleFromSource(Map<String, Object> source, String field, double defaultValue) {
+    if (source == null || !source.containsKey(field)) {
+      return defaultValue;
+    }
+    
+    Object value = source.get(field);
+    if (value instanceof Number) {
+      return ((Number) value).doubleValue();
+    }
+    
+    // Tentar converter string para número
+    if (value instanceof String) {
+      try {
+        return Double.parseDouble((String) value);
+      } catch (NumberFormatException e) {
+        return defaultValue;
+      }
+    }
+    
+    return defaultValue;
   }
 
   /**
@@ -156,51 +238,6 @@ public class FeatureExtractor {
   }
 
   /**
-   * Extrai número do documento (ex: "doc_42" -> 42)
-   */
-  private int extractDocNumber(String docId) {
-    try {
-      return Integer.parseInt(docId.replaceAll("\\D+", ""));
-    } catch (NumberFormatException e) {
-      return 0;
-    }
-  }
-
-  /**
-   * Simula popularidade do produto (em produção, viria de analytics)
-   * Usa uma função que favorece produtos do meio da lista
-   */
-  private double simulatePopularity(int docNumber) {
-    // Distribuição normal simulada: produtos do meio são mais populares
-    double normalized = docNumber / 100.0;
-    return Math.exp(-Math.pow(normalized - 0.5, 2) / 0.1) * 10;
-  }
-
-  /**
-   * Simula qualidade/rating do produto (1.0 a 5.0)
-   */
-  private double simulateQuality(int docNumber) {
-    // Varia entre 3.0 e 5.0 com padrão pseudo-aleatório
-    int seed = docNumber * 17 + 42;
-    double quality = 3.0 + ((seed % 100) / 50.0);
-    return Math.min(5.0, quality);
-  }
-
-  /**
-   * Simula CTR (Click-Through Rate) baseado em categoria
-   */
-  private double simulateCTR(int docNumber, String category) {
-    // Eletrônicos geralmente têm CTR mais alto
-    double baseCTR = category.contains("eletrônico") ? 0.15 : 0.10;
-
-    // Adiciona variação pseudo-aleatória
-    int seed = docNumber * 23 + 17;
-    double variation = (seed % 10) / 100.0;
-
-    return Math.min(0.30, baseCTR + variation);
-  }
-
-  /**
    * Imprime resumo das features para debug
    */
   public void printFeatureSummary(FeatureVector features) {
@@ -224,8 +261,8 @@ public class FeatureExtractor {
     printFeatureGroup(allFeatures, "first_word_match", "query_has_numbers",
         "title_has_numbers", "has_known_brand");
 
-    System.out.println("\n⭐ Popularidade (Simulada):");
-    printFeatureGroup(allFeatures, "simulated_popularity", "simulated_quality", "simulated_ctr");
+    System.out.println("\n⭐ Popularidade (Dataset Real):");
+    printFeatureGroup(allFeatures, "popularity", "quality", "ctr");
 
     System.out.println("──────────────────────────────────────────────");
   }

@@ -49,7 +49,7 @@ public class Main {
       // --- 6. DEMONSTRAÇÃO: Busca Híbrida + LTR ---
       
       // Busca 1: Query com termos específicos + conceito
-      searchEngine.search("Smartwatch Apple Watch Series 9 32GB", 5);
+      searchEngine.search("notebook", 5);
       
       // Busca 2: Query conceitual (vai explorar a semântica)
       // searchEngine.search("dispositivo para ouvir música sem fio", 5);

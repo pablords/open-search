@@ -10,18 +10,36 @@ import random
 import sys
 
 # Produtos base com descrições realistas
+# Distribuições de popularidade por categoria (min, max)
+CATEGORY_POPULARITY = {
+    "Eletrônicos": (500, 8000),    # Alta popularidade
+    "Moda": (300, 6000),           # Alta popularidade
+    "Casa": (200, 4000),           # Média popularidade
+    "Esportes": (150, 3500),       # Média popularidade
+    "Livros": (100, 2500),         # Baixa popularidade
+    "Alimentos": (400, 5000)       # Alta popularidade
+}
+
+# Distribuições de qualidade por categoria (min, max)
+CATEGORY_QUALITY = {
+    "Eletrônicos": (3.8, 4.9),     # Alta qualidade
+    "Moda": (3.5, 4.7),            # Média-alta qualidade
+    "Casa": (3.7, 4.8),            # Alta qualidade
+    "Esportes": (3.6, 4.6),        # Média qualidade
+    "Livros": (4.0, 4.9),          # Muito alta qualidade
+    "Alimentos": (3.4, 4.5)        # Média qualidade
+}
+
 BASE_PRODUCTS = [
-    # ELETRÔNICOS
-    {"title": "Smartphone Samsung Galaxy S23 Ultra", "description": "Câmera de 200MP, tela AMOLED 6.8 polegadas, 5G, bateria de longa duração", "category": "Eletrônicos"},
-    {"title": "Notebook Dell Inspiron 15", "description": "Intel Core i7, 16GB RAM, SSD 512GB, placa de vídeo NVIDIA dedicada", "category": "Eletrônicos"},
-    {"title": "Smart TV LG 55 polegadas", "description": "4K OLED, HDR, WebOS, controle remoto com inteligência artificial", "category": "Eletrônicos"},
-    {"title": "Fone de ouvido Sony WH-1000XM5", "description": "Cancelamento de ruído ativo, Bluetooth 5.2, bateria 30 horas", "category": "Eletrônicos"},
-    {"title": "Apple iPad Pro", "description": "Chip M2, tela Liquid Retina XDR, compatível com Apple Pencil", "category": "Eletrônicos"},
-    {"title": "Câmera Canon EOS R6", "description": "Mirrorless full frame, 24.2MP, vídeo 4K 60fps, estabilização", "category": "Eletrônicos"},
-    {"title": "Console PlayStation 5", "description": "SSD ultra-rápido, controle DualSense, ray tracing, gráficos 4K", "category": "Eletrônicos"},
-    {"title": "Smartwatch Apple Watch Series 9", "description": "Monitor cardíaco, GPS, rastreamento de sono, resistente à água", "category": "Eletrônicos"},
-    {"title": "Kindle Paperwhite", "description": "Tela sem reflexo, luz ajustável, 16GB, à prova d'água", "category": "Eletrônicos"},
-    {"title": "Caixa de som JBL Flip 6", "description": "Bluetooth portátil, som 360 graus, à prova d'água, 12h bateria", "category": "Eletrônicos"},
+    # Eletrônicos
+    {"title": "Notebook", "description": "Computador portátil para trabalho e estudos", "category": "Eletrônicos"},
+    {"title": "Smartphone", "description": "Telefone inteligente com câmera de alta resolução", "category": "Eletrônicos"},
+    {"title": "Tablet", "description": "Dispositivo touch screen para entretenimento", "category": "Eletrônicos"},
+    {"title": "Smartwatch", "description": "Relógio inteligente com monitoramento de saúde", "category": "Eletrônicos"},
+    {"title": "Fone de Ouvido", "description": "Fone com cancelamento de ruído", "category": "Eletrônicos"},
+    {"title": "Mouse", "description": "Mouse sem fio ergonômico", "category": "Eletrônicos"},
+    {"title": "Teclado", "description": "Teclado mecânico retroiluminado", "category": "Eletrônicos"},
+    {"title": "Monitor", "description": "Monitor LED Full HD", "category": "Eletrônicos"},
     
     # MODA E ACESSÓRIOS
     {"title": "Tênis Nike Air Max 270", "description": "Amortecimento de impacto, design moderno, ideal para corrida e caminhada", "category": "Moda"},
@@ -76,27 +94,57 @@ SIZES = ["P", "M", "G", "GG", "XG", "32GB", "64GB", "128GB", "256GB", "512GB", "
 ADJECTIVES = ["Premium", "Pro", "Ultra", "Max", "Plus", "Lite", "Elite", "Essential", 
               "Classic", "Sport", "Deluxe", "Advanced", "Basic", "Special Edition"]
 
-def generate_product_variation(base_product, index):
-    """Gera uma variação única de um produto base"""
+def generate_popularity_metrics(category, seed=None):
+    """Gera métricas de popularidade realistas baseadas na categoria"""
+    if seed is not None:
+        random.seed(seed)
+    
+    # Popularidade (clicks)
+    pop_min, pop_max = CATEGORY_POPULARITY[category]
+    popularity = random.randint(pop_min, pop_max)
+    
+    # Qualidade (rating de 0 a 5)
+    qual_min, qual_max = CATEGORY_QUALITY[category]
+    quality = round(random.uniform(qual_min, qual_max), 1)
+    
+    # CTR (correlacionado com qualidade: produtos melhores têm CTR maior)
+    # Base CTR: 0.02 a 0.12
+    base_ctr = 0.02 + (quality - 3.0) * 0.05  # 3.0 stars = 2%, 5.0 stars = 12%
+    # Adicionar variação aleatória ±30%
+    ctr = base_ctr * random.uniform(0.7, 1.3)
+    ctr = round(min(0.20, max(0.01, ctr)), 3)  # Limitar entre 1% e 20%
+    
+    return {
+        "popularity": popularity,
+        "quality": quality,
+        "ctr": ctr
+    }
+
+def generate_product_variation(base_product, seed):
+    """Gera uma variação do produto base com características únicas"""
+    random.seed(seed)
+    
     title = base_product["title"]
     description = base_product["description"]
+    category = base_product["category"]
     
-    # Adicionar variações aleatórias ao título
-    variations = []
-    
+    # Adicionar marca aleatória
     if random.random() > 0.3:
-        variations.append(random.choice(ADJECTIVES))
+        title = f"{random.choice(BRANDS)} {title}"
     
+    # Adicionar cor aleatória
     if random.random() > 0.5:
-        variations.append(random.choice(COLORS))
+        color = random.choice(COLORS)
+        title += f" {color}"
+        description += f" na cor {color.lower()}"
     
-    if random.random() > 0.4:
-        variations.append(random.choice(SIZES))
+    # Adicionar tamanho/capacidade
+    if random.random() > 0.5:
+        size = random.choice(SIZES)
+        description += f" - {size}"
     
-    if random.random() > 0.6:
-        variations.append(random.choice(BRANDS))
-    
-    # Adicionar variações ao título
+    # Adicionar adjetivos à descrição
+    variations = random.sample(ADJECTIVES, min(3, len(ADJECTIVES)))
     if variations:
         title += " " + " ".join(random.sample(variations, min(2, len(variations))))
     
@@ -104,18 +152,34 @@ def generate_product_variation(base_product, index):
     if random.random() > 0.7:
         title += f" Modelo {random.randint(100, 9999)}"
     
+    # Gerar métricas de popularidade
+    metrics = generate_popularity_metrics(category, seed + 1000)
+    
     return {
         "title": title,
         "description": description,
-        "category": base_product["category"]
+        "category": category,
+        "popularity": metrics["popularity"],
+        "quality": metrics["quality"],
+        "ctr": metrics["ctr"]
     }
 
 def generate_dataset(num_products):
     """Gera dataset com número específico de produtos"""
     products = []
     
-    # Adicionar todos os produtos base
-    products.extend(BASE_PRODUCTS)
+    # Adicionar todos os produtos base com métricas
+    for i, base in enumerate(BASE_PRODUCTS):
+        metrics = generate_popularity_metrics(base["category"], i)
+        product = {
+            "title": base["title"],
+            "description": base["description"],
+            "category": base["category"],
+            "popularity": metrics["popularity"],
+            "quality": metrics["quality"],
+            "ctr": metrics["ctr"]
+        }
+        products.append(product)
     
     # Gerar variações até atingir o número desejado
     while len(products) < num_products:
@@ -160,6 +224,16 @@ def main():
     for cat, count in sorted(categories.items()):
         percentage = (count / len(products)) * 100
         print(f"   {cat}: {count} ({percentage:.1f}%)")
+    
+    # Estatísticas de métricas
+    print(f"\n📈 Métricas de popularidade:")
+    avg_popularity = sum(p["popularity"] for p in products) / len(products)
+    avg_quality = sum(p["quality"] for p in products) / len(products)
+    avg_ctr = sum(p["ctr"] for p in products) / len(products)
+    
+    print(f"   Popularidade média: {avg_popularity:.0f} clicks")
+    print(f"   Qualidade média: {avg_quality:.1f} / 5.0")
+    print(f"   CTR médio: {avg_ctr*100:.1f}%")
     
     print(f"\n💡 Para usar no código Java:")
     print(f'   List<String> products = DatasetLoader.loadFromJson("data/products_synthetic.json");')
